@@ -6,6 +6,7 @@
   "rules": {
     "array-type": false,
     "arrow-parens": false,
+
     "deprecation": {
       "severity": "warn"
     },
@@ -77,6 +78,7 @@
       "app",
       "camelCase"
     ],
+    "variable-name": false,
     "component-selector": [
       true,
       "element",

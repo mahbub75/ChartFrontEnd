@@ -1,8 +1,8 @@
 
 <ion-content>
     <ion-list>
-      <ion-item *ngFor="let lesson of labList">
-        <ion-button (click)="goToLesson(lesson.path)" >{{lesson.name}}</ion-button>
+      <ion-item *ngFor="let lesson of lessonList">
+        <ion-button (click)="goToLesson(lesson.id)" >{{lesson.name}}</ion-button>
       </ion-item>
     </ion-list>
 </ion-content>

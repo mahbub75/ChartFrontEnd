@@ -9,6 +9,7 @@ import { LessonsPageRoutingModule } from './lessons-routing.module';
 import { LessonsPage } from './lessons.page';
 import {ControlLabComponent} from './control-lab/control-lab.component';
 import {HttpClientModule} from '@angular/common/http';
+import {SessionListComponent} from './session-list/session-list.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import {HttpClientModule} from '@angular/common/http';
     LessonsPageRoutingModule,
     HttpClientModule,
   ],
-  declarations: [LessonsPage , ControlLabComponent]
+  declarations: [LessonsPage , SessionListComponent , ControlLabComponent]
 })
 export class LessonsPageModule {}

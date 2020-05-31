@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {CoreRepository} from '../core-repository';
 
 @Injectable({
   providedIn: 'root'
@@ -6,12 +7,9 @@ import { Injectable } from '@angular/core';
 export class AuthorizationService {
 
   constructor() { }
-  isLogged=false;
-  get isLoggedIn(){
-    return this.isLogged;
+  get isLoggedIn(): boolean {
+    return !!(CoreRepository.user);
   }
-  set  loginStatus(loginStatus:boolean){
-    this.isLogged=loginStatus;
-  }
+
 
 }
