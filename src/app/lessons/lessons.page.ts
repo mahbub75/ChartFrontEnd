@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 import {Lesson} from '../core/model/lesson';
-import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'app-lessons',
@@ -29,6 +28,6 @@ export class LessonsPage implements OnInit {
     }
 
     goToLesson(lessonId: string) {
-        this.router.navigate(['lessons'+'/'+'sessions'+'/'+lessonId])
+        this.router.navigate(['lessons'+'/'+lessonId])
     }
 }

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MenuController} from '@ionic/angular';
 import {MenuService} from './menu.service';
 import {AuthorizationService} from '../core/service/authorization.service';
+import {CoreRepository} from '../core/core-repository';
+import {User} from '../core/model/user';
 
 @Component({
     selector: 'app-menu',
@@ -11,11 +13,15 @@ import {AuthorizationService} from '../core/service/authorization.service';
 })
 
 export class MenuPage implements OnInit {
-
-    constructor(private menuController: MenuController,private menuService:MenuService,public authorizationService:AuthorizationService) {
+user=new User();
+    constructor(private menuService:MenuService,public authService:AuthorizationService) {
     }
 
     ngOnInit() {
+        this.user=CoreRepository.user;
     }
 
+    logOut() {
+        this.authService.logOut();
+    }
 }

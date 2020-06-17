@@ -2,16 +2,21 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LessonsPage } from './lessons.page';
-import {ControlLabComponent} from './control-lab/control-lab.component';
-import {SessionsRoute} from './session-list/session-list.component';
 
 const routes: Routes = [
   {
     path: '',
     component:LessonsPage
   },
-  { path: 'control-lab', component: ControlLabComponent},
- SessionsRoute
+  {
+    path: ':lessonId',
+    loadChildren: () => import('./current-lesson/current-lesson.module').then( m => m.CurrentLessonModule)
+  },
+  {
+    path: ':lessonId'+'/'+ 'session'+'/'+':sessionId',
+    loadChildren: () => import('./session/session.module').then( m => m.SessionModule)
+  }
+
 
 ];
 
