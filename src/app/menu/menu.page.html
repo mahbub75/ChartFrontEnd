@@ -1,5 +1,5 @@
 
-<ion-menu side="start" content-id="main-content">
+<ion-menu *ngIf="authService.isLoggedIn" side="start" content-id="main-content">
 <ion-header>
    <ion-toolbar translucent>
      <ion-title>Menu</ion-title>
@@ -7,9 +7,9 @@
  </ion-header>
  <ion-content>
    <ion-list>
-     <ion-item>
+     <ion-item lines="none">
        <ion-icon name="person" slot="start"></ion-icon>
-       <ion-label>{{user.firstLastName}}</ion-label>
+       <ion-label>{{user?.firstLastName}}</ion-label>
      </ion-item>
    </ion-list>
  </ion-content>

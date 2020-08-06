@@ -9,13 +9,13 @@ import {USER_KEY} from './constants';
     providedIn: 'root'
 })
 export class CoreRepository {
+    asyncUser: BehaviorSubject<User> = new BehaviorSubject(null);
     BASE_URL = environment.base_url;
-    constructor(private http: HttpClient) {
+    constructor(public http: HttpClient) {
     }
 
     private static createAuthorizationHeader(headers: HttpHeaders = null) {
-        const mHeader: HttpHeaders = (headers) ? headers : new HttpHeaders();
-        return mHeader;
+        return (headers) ? headers : new HttpHeaders();
     }
     post(url: string, data, params: HttpParams = null, headers: HttpHeaders = null) {
         return this.http.post(this.BASE_URL + url, data, {
@@ -43,13 +43,14 @@ export class CoreRepository {
 
     set user(user: User) {
         localStorage.setItem(USER_KEY, JSON.stringify(user));
+        this.asyncUser.next(user);
     }
 
     static get user() {
         return (JSON.parse(localStorage.getItem(USER_KEY)) as User);
     }
     static get userId():string {
-        return this.user.id;
+        return CoreRepository.user.id;
     }
 
 }

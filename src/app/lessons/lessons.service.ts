@@ -20,4 +20,8 @@ export class LessonsService {
         const userId = CoreRepository.userId;
         return this.lessonRepo.lessonList(userId);
     }
+
+    getLessonById(lessonId:string): Observable<Lesson>{
+        return this.lessonRepo.getLessonById(lessonId)
+    }
 }

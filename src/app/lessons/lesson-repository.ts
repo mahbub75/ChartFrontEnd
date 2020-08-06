@@ -14,7 +14,14 @@ export class LessonRepository extends CoreRepository {
     lessonList(userId: string): Observable<Lesson[]> {
         return this.get('user/' + userId + '/lessons').pipe(map(res => (res as Lesson[])));
     }
+
     sessionList(lessonId: string): Observable<Session[]> {
         return this.get('lesson/' + lessonId + '/sessions').pipe(map(res => (res as Session[])))
+    }
+
+    getLessonById(lessonId: string): Observable<Lesson> {
+        return this.get('lesson' + '/' + lessonId).pipe(
+            map(res => res as Lesson)
+        )
     }
 }

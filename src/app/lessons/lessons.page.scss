@@ -1,6 +1,13 @@
-.list {
+.ion-list-margin {
 margin: 2%;
 }
-.list-items{
+.ion-item-margin{
   margin-top: 2%;
+}
+.ion-item h2{
+  color: #4d4d4d;
+}
+ion-item:hover h2{
+  color: #0d0d0d;
+  text-shadow:.5px .5px #4d4d4d;
 }

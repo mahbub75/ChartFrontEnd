@@ -1,18 +1,21 @@
+<ion-toolbar>
+    <ion-title>لیست درس ها</ion-title>
+</ion-toolbar>
 
 <ion-content fullscreen>
-    <ion-list class="list" lines="none">
-        <ion-list-header slot="center">
-           لیست درس ها
-        </ion-list-header>
-
-        <ion-item *ngFor="let lesson of lessonList" (click)="goToLesson(lesson.id)" class="list-items" >
+    <ion-list class="ion-list-margin" lines="none">
+        <ion-item *ngFor="let lesson of lessonList" (click)="goToLesson(lesson.id)" class="ion-item-margin" >
             <ion-avatar slot="start">
                 <img src="../../assets/icon/favicon.png"  alt=""/></ion-avatar>
             <ion-label>
-                <h2>{{lesson.name}}</h2>
-                <h3>{{lesson.teacher_info}}</h3>
+                <h2>{{lesson?.name}}</h2>
             </ion-label>
         </ion-item>
     </ion-list>
+    <ion-fab (click)="addNewLesson()" vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 
 </ion-content>

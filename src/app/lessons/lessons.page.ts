@@ -13,7 +13,8 @@ import {Lesson} from '../core/model/lesson';
 })
 export class LessonsPage implements OnInit {
     lessonList: Lesson[];
-    subscription:Subscription[] = [] ;
+    subscription: Subscription[] = [];
+
     constructor(private lessonsService: LessonsService, private router: Router, private http: HttpClient) {
     }
 
@@ -27,7 +28,11 @@ export class LessonsPage implements OnInit {
         ));
     }
 
+    addNewLesson() {
+
+    }
+
     goToLesson(lessonId: string) {
-        this.router.navigate(['lessons'+'/'+lessonId])
+        this.router.navigate(['lessons' + '/' + lessonId])
     }
 }
