@@ -1,3 +1,16 @@
-<p>
-  session works!
-</p>
+<ion-toolbar>
+    <ion-title>{{currentSession?.lesson?.name}}-{{currentSession?.topic}}</ion-title>
+</ion-toolbar>
+
+<ion-content>
+
+    <app-file-selector [sessionId]="sessionId" (selectedFileName)="getAllFiles()" ></app-file-selector>
+
+    <app-drawing-graph *ngIf="selectedFileContent" [fileContent]="selectedFileContent"></app-drawing-graph>
+
+    <app-file-list [files]="files" [sessionId]="sessionId" (selectedFileContent)="fileContent($event)" [header]="'فایل های '+' '+currentSession.topic">
+
+    </app-file-list>
+
+
+</ion-content>
