@@ -18,8 +18,7 @@ userPass=new UserPass();
     ngOnInit() {
     }
 
-    login() {
-        this.loginService.login(this.userPass);
-
+  login() {
+      this.loginService.login(this.userPass);
     }
 }

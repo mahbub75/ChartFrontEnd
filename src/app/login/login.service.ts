@@ -7,6 +7,7 @@ import {CoreRepository} from '../core/core-repository';
 import {Router} from '@angular/router';
 import {UserPass} from '../core/model/user-pass';
 import {error} from '@angular/compiler/src/util';
+import {BasicClass} from '../core/classes/basic-class';
 
 @Injectable({
     providedIn: 'root'
@@ -14,18 +15,17 @@ import {error} from '@angular/compiler/src/util';
 export class LoginService {
     subscription: Subscription[] = [];
 
-    constructor(private router: Router, private loginRepo: LoginRepository, private coreRepository: CoreRepository) {
+    constructor(private router:Router, private loginRepo: LoginRepository, private coreRepository: CoreRepository) {
     }
 
     login(userPass: UserPass) {
         this.subscription.push(
             this.loginRepo.login(userPass).pipe(map((res: User) => res))
                 .subscribe(user => {
+                    console.log(user);
                     this.coreRepository.user = user;
-                    this.router.navigate(['lessons']);
-                },msg =>{
-                    console.log(msg)
-                    }
+                     this.router.navigate(['lessons']);
+                }
                 ))
 
     }

@@ -80,7 +80,7 @@
     --ion-color-dark-contrast-rgb: 0,0,0;
     --ion-color-dark-shade: #d7d8da;
     --ion-color-dark-tint: #f5f6f9;
-  
+
     --ion-color-medium: #989aa2;
     --ion-color-medium-rgb: 152,154,162;
     --ion-color-medium-contrast: #000000;
@@ -174,5 +174,14 @@
   
   ion-title.title-large {
     --color: white;
+  }
+
+  .negative-toast-msg{
+    color:white;
+    background-color: darkred;
+  }
+  .positive-toast-msg{
+    color:white;
+    background-color: seagreen;
   }
 }

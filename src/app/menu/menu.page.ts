@@ -6,6 +6,7 @@ import {CoreRepository} from '../core/core-repository';
 import {User} from '../core/model/user';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -33,11 +34,11 @@ export class MenuPage implements OnInit {
         );
     }
 
-    logOut() {
-        this.authService.logOut();
+   async logOut() {
+       await this.authService.logOut();
     }
 
     getUser() {
-this.user = CoreRepository.user;
+        this.user = CoreRepository.user;
     }
 }
