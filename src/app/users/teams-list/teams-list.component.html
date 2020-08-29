@@ -1,0 +1,37 @@
+<ion-card >
+
+    <ion-card-content style="padding: 10px">
+
+       <div  style="max-height: 450px;overflow-y: scroll;direction: ltr;">
+           <ion-virtual-scroll  [items]="teamsList" >
+                   <ion-card *virtualItem="let team" class="team-card">
+                       <ion-card-subtitle >
+                           <ion-row fxLayoutAlign="space-between center">
+                               <ion-text dir="rtl" >{{team.name}}</ion-text>
+                               <ion-button (click)="deleteTeam(team.id)" >
+                                   <ion-icon name="trash" lazy="true"></ion-icon>
+                               </ion-button>
+                           </ion-row>
+                       </ion-card-subtitle>
+                       <ion-card-content style="display: flex; justify-content: center" >
+                          <ion-text >{{team.members}}</ion-text>
+                       </ion-card-content>
+                   </ion-card>
+           </ion-virtual-scroll>
+       </div>
+
+
+
+        <ion-item class="new-team" lines="none">
+          <ion-col fxLayoutAlign="center stretch">
+              <ion-input [(ngModel)]="currentTeamName"
+                         placeholder="نام گروه"></ion-input>
+              <ion-input [(ngModel)]="currentTeamName"
+                         placeholder="اعضای گروه"></ion-input>
+              <ion-button (click)="onAddNewTeam(currentTeamName)" >افزودن</ion-button>
+          </ion-col>
+        </ion-item>
+    </ion-card-content>
+
+</ion-card>
+
