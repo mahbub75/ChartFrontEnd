@@ -9,9 +9,11 @@ import{MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {BaseComponent} from './component/BaseComponent/base.component';
 import {CustomErrorHandler} from './error-handler/custom-error-handler';
+import {MultiFileUploadComponent} from '../lessons/session/files/multi-file-upload/multi-file-upload.component';
+import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
-  declarations: [DrawingGraphComponent, BaseComponent],
+  declarations: [DrawingGraphComponent, BaseComponent,  MultiFileUploadComponent],
     imports: [
         CommonModule,
         IonicModule,
@@ -19,11 +21,13 @@ import {CustomErrorHandler} from './error-handler/custom-error-handler';
         MatTooltipModule,
         MatButtonModule,
         MatGridListModule,
+        FileUploadModule
 
     ],
-  exports: [
-    DrawingGraphComponent
-  ],
+    exports: [
+        DrawingGraphComponent,
+        MultiFileUploadComponent
+    ],
   providers: [AuthorizationService, { provide: ErrorHandler, useClass: CustomErrorHandler }]
 })
 export class CoreModule { }

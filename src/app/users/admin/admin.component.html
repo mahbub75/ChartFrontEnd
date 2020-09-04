@@ -1,11 +1,19 @@
-
 <ion-content fullscreen>
-  <ion-row fxLayoutAlign="space-between stretch" class="main-container" >
-    <ion-row fxLayoutAlign="space-between start" fxLayoutGap="15px" >
-        <ion-datetime class="date-time" [(ngModel)]="selectedDate"  [displayFormat]="dateDisplayFormat" placeholder="تاریخ"></ion-datetime>
-      <ion-button  class="upload-button" >آپلود</ion-button>
-    </ion-row>
-    <app-teams-list class="items-list"></app-teams-list>
-  </ion-row>
-
+    <ion-grid>
+        <ion-row fxLayoutAlign="space-between stretch" class="main-container">
+            <ion-col fxLayoutGap="30px" >
+                <ion-row >
+                    <ion-datetime class="date-time" [(ngModel)]="selectedDate" [displayFormat]="dateDisplayFormat"
+                                  placeholder="تاریخ"></ion-datetime>
+                </ion-row>
+                <ion-row >
+                    <ion-col>
+                        <app-multi-file-upload (selectedFiles)="upload($event)"></app-multi-file-upload>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <app-teams-list class="items-list"></app-teams-list>
+        </ion-row>
+    </ion-grid>
 </ion-content>
+

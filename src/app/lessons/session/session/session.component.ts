@@ -37,7 +37,6 @@ ngAfterViewInit() {
     getCurrentSession(sessionId: string) {
         this.sessionService.getSession(sessionId).subscribe(session => {
             this.currentSession = session;
-            this.files = session.files;
         });
     }
 

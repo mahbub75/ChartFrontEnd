@@ -11,8 +11,8 @@ import {FileModel} from './files/file-model';
 })
 export class SessionRepository extends CoreRepository {
     // upload real file
-    uploadFile(formData: FormData,sessionId:string) {
-        return this.post('session'+'/'+sessionId+'/'+'uploadFile', formData);
+    uploadFile(formData: FormData) {
+        return this.post('uploadFiles', formData);
     }
 
 // save uploaded file properties

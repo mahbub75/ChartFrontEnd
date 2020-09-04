@@ -12,8 +12,8 @@ export class FileService {
     constructor(private sessionRepository: SessionRepository) {
     }
 
-    uploadFile(formData: FormData,sessionId:string) {
-        return this.sessionRepository.uploadFile(formData,sessionId)
+    uploadFile(formData: FormData) {
+        return this.sessionRepository.uploadFile(formData)
     }
 
     // saveFile(file: FileModel, sessionId: string): Observable<{msg:string}> {

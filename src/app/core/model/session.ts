@@ -1,18 +1,13 @@
-import {Lesson} from './lesson';
-import {FileModel} from '../../lessons/session/files/file-model';
+import {User} from './user';
 
 export class Session {
     id: string;
-    centerId:string;
+    user:User;
     topic: string;
-    files: FileModel[];
-    lesson:Lesson;
 
-    constructor(topic?: string, centerId?:string, files?: FileModel[], lesson?:Lesson) {
+    constructor(topic?: string, user?:User) {
         this.topic = topic;
-        this.files = files;
-        this.centerId=centerId;
-        this.lesson = lesson;
+        this.user=user;
     }
 }
 

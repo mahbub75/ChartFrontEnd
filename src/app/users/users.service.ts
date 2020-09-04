@@ -8,8 +8,11 @@ import {UsersRepository} from './users-repository';
 export class UsersService {
 
   constructor(private usersRepository:UsersRepository) { }
-  postNewTeam(newTeam:User){
-return this.usersRepository.postNewTeam(newTeam)
+  getTeamListByCenterIdAndLessonId(adminId:string,lessonId:string){
+   return  this.usersRepository.getTeamListByCenterIdAndLessonId(adminId,lessonId);
+  }
+  postNewTeam(newTeam:User,lessonId:string){
+return this.usersRepository.postNewTeam(newTeam,lessonId)
   }
   deleteTeam(teamId:string){
     return this.usersRepository.deleteTeam(teamId);

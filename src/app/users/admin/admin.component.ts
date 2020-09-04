@@ -1,28 +1,47 @@
-import {Component, OnInit} from '@angular/core';
-import {File} from '@ionic-native/file/ngx';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MultiFileUploadComponent} from '../../lessons/session/files/multi-file-upload/multi-file-upload.component';
+import {FileService} from '../../lessons/session/files/file.service';
+import {Alert, MsgType} from '../../core/classes/alert';
 
 @Component({
     selector: 'app-admin',
     templateUrl: './admin.component.html',
-    styleUrls: ['./admin.component.scss']
+    styleUrls: ['./admin.component.scss'],
+    providers: [FileService]
 })
 export class AdminComponent implements OnInit {
     selectedDate: string;
-    dateDisplayFormat = 'DD/MM/YYYY';
+    dateDisplayFormat = 'YYYY-MM-DD';
+    @ViewChild(MultiFileUploadComponent) fileField: MultiFileUploadComponent;
 
-    constructor(private file: File) {
-        // const date = new Date();
-        // this.currentDate = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+    constructor(private fileService: FileService) {
     }
 
     ngOnInit() {
 
     }
 
-    // onUploadFiles() {
-    //     this.fileOp(this.file.dataDirectory, 'C:\\New folder (2)').then(_ => console.log('Directory exists')).catch(err =>
-    //         console.log('Directory doesn\'t exist'));
-    // }
+    upload(files) {
+
+        if (!this.selectedDate) {
+            Alert.toast('بازه زمانی را مشخص کنید', MsgType.negative)
+        } else {
+            const formData = new FormData();
+            files.forEach((file) => {
+                const uploadable = file.name.includes(this.selectedDate.slice(0,10));
+                console.log(this.selectedDate.slice(0,10),uploadable,file.name);
+                if (uploadable) {
+                    formData.append('files', file.rawFile, file.name);
+                }
+            });
+
+            // POST formData to Server
+            this.fileService.uploadFile(formData)
+                .subscribe(() => {
+                }, error => console.log(error))
+        }
+
+    }
 
     compareDate() {
         // if (input1Date.getTime() < input2Date.getTime())
@@ -30,4 +49,4 @@ export class AdminComponent implements OnInit {
 
 }
 
-export const AdminRoute = {path: '', component: AdminComponent}
+export const AdminRoute = {path: 'admin', component: AdminComponent}

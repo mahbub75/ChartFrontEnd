@@ -1,0 +1,28 @@
+<ion-grid dir="ltr" >
+  <div class="file-input-container">
+    <label>
+      <input
+              #folderInput
+              type="file"
+              ng2FileSelect
+              [uploader]="uploader"
+              (change)="getFiles()"
+              webkitDirectory
+              multiple/>
+      Add Files
+    </label>
+  </div>
+
+  <h2>Files: {{ uploader?.queue?.length }}</h2>
+
+  <ion-list>
+    <ion-reorder-group (ionItemReorder)="reorderFiles($event)" disabled="false">
+      <ion-item *ngFor="let item of uploader.queue" dir="ltr">
+        <ion-label>
+          {{ item?.file?.name }}
+        </ion-label>
+        <ion-reorder></ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+  </ion-list>
+</ion-grid>

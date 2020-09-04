@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../core/model/user';
+import {User, UserRoll} from '../../core/model/user';
 import {UsersService} from '../users.service';
 import {Subscription} from 'rxjs';
+import {Team} from './team';
+import {CoreRepository} from '../../core/core-repository';
 
 @Component({
     selector: 'app-teams-list',
@@ -10,27 +12,35 @@ import {Subscription} from 'rxjs';
     providers: [UsersService]
 })
 export class TeamsListComponent implements OnInit {
-    currentTeamName: string;
-    teamsList: User[] = [new User('team 1','12345678','mahbube khazaee-fatemeh obdoni',
-        'mahbube-fatemehllllllllllllllll'),new User('team 2'),
-        new User('team 3'),new User('team 4'),new User('team 5'),new User('team 6'),new User('team 7'),
-        new User('team 12'),new User('team 20'),new User('team 6'),new User('team 7'),new User('team 8'),];
+    newTeam = new Team();
+    currentAdmin = CoreRepository.user;
+    currentLesson = this.currentAdmin.lesson;
+    adminId = CoreRepository.userId;
+    teamsList: Team[] = [];
     subscription: Subscription[] = [];
 
     constructor(private usersService: UsersService) {
     }
 
     ngOnInit() {
+        this.getTeamList();
     }
 
-    onAddNewTeam(teamName: string) {
-        const newTeam = new User(teamName, '12345678');
-        this.subscription.push(
-            this.usersService.postNewTeam(newTeam).subscribe(() => {
-                this.teamsList.push(newTeam);
-                this.currentTeamName = undefined;
+    getTeamList() {
+        this.subscription.push(this.usersService.getTeamListByCenterIdAndLessonId(this.adminId, this.currentLesson.id)
+            .subscribe(teamsList => {
+                this.teamsList = teamsList;
+            }))
+    }
 
-            })
+    onSaveNewTeam() {
+        this.newTeam.centerId = this.adminId;
+        this.subscription.push(
+            this.usersService.postNewTeam(this.newTeam, this.currentLesson.id)
+                .subscribe(() => {
+                    this.getTeamList();
+                    this.newTeam = new Team();
+                })
         )
 
     }

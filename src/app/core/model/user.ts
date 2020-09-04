@@ -1,14 +1,18 @@
+import {Lesson} from './lesson';
+
 export class User {
     id:string;
     name:string;
-    password:string;
-    firstLastName:string;
-    members:string;
-    constructor(name?:string,password?:string,firstLastName?:string,members?:string) {
+    roll:string;
+    lesson:Lesson;
+    constructor(name?:string,roll?:string,lesson?:Lesson) {
         this.name=name;
-        this.password = password;
-        this.firstLastName = firstLastName;
-        this.members = members;
+        this.roll=roll;
+        this.lesson=lesson
     }
 
+}
+export const enum UserRoll{
+    ADMIN='admin',
+    TEAM='team'
 }

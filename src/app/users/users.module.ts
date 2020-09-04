@@ -11,6 +11,7 @@ import {File} from '@ionic-native/file/ngx';
 import {TeamsListComponent} from './teams-list/teams-list.component';
 import {FlexModule} from '@angular/flex-layout';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {CoreModule} from '../core/core.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
         HttpClientJsonpModule,
         FlexModule,
         ScrollingModule,
+        CoreModule,
 
     ],
     entryComponents:[TeamsListComponent],

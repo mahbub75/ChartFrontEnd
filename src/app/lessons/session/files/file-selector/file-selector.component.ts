@@ -38,7 +38,7 @@ export class FileSelectorComponent extends BaseComponent implements OnInit, Afte
         const formData = new FormData();
         formData.append('file', selectedFile);
         // upload file as formData
-        this.fileService.uploadFile(formData,this.sessionId)
+        this.fileService.uploadFile(formData)
             .subscribe(() => {
                 this.selectedFileName.emit('nothing');
                 this.presentToast('ok');
