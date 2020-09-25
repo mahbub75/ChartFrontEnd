@@ -1,0 +1,10 @@
+
+    <ion-grid style="align-content: center;display: flex">
+        <ion-row  class="ion-align-items-center ion-justify-content-between" >
+            <ion-col style="flex-grow: 1"><ion-input style="text-align: center" [(ngModel)]="team.name" (keydown.enter)="onEdit()" placeholder="نام گروه"></ion-input></ion-col>
+            <ion-col style="flex-grow: 3"><ion-input  [(ngModel)]="team.members" (keydown.enter)="onEdit()" placeholder="اعضای گروه"></ion-input></ion-col>
+            <ion-col style="flex-grow: 1"><ion-button  class="small-button" color="medium" (click)="onEdit()">ویرایش</ion-button></ion-col>
+        </ion-row>
+    </ion-grid>
+
+
