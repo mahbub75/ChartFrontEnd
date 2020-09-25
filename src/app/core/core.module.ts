@@ -9,11 +9,15 @@ import{MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {BaseComponent} from './component/BaseComponent/base.component';
 import {CustomErrorHandler} from './error-handler/custom-error-handler';
-import {MultiFileUploadComponent} from '../lessons/session/files/multi-file-upload/multi-file-upload.component';
 import {FileUploadModule} from 'ng2-file-upload';
+import {FileListComponent} from './files/file-list/file-list.component';
+import {MultiFileUploadComponent} from './files/multi-file-upload/multi-file-upload.component';
+import {SingleFileUploaderComponent} from './files/single-file-uploader/single-file-uploader.component';
+import {FormsModule} from '@angular/forms';
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [DrawingGraphComponent, BaseComponent,  MultiFileUploadComponent],
+  declarations: [DrawingGraphComponent, BaseComponent,  MultiFileUploadComponent,FileListComponent,SingleFileUploaderComponent],
     imports: [
         CommonModule,
         IonicModule,
@@ -21,12 +25,17 @@ import {FileUploadModule} from 'ng2-file-upload';
         MatTooltipModule,
         MatButtonModule,
         MatGridListModule,
-        FileUploadModule
+        FileUploadModule,
+        FormsModule,
+        FlexModule,
+        FlexLayoutModule
 
     ],
     exports: [
         DrawingGraphComponent,
-        MultiFileUploadComponent
+        MultiFileUploadComponent,
+        FileListComponent,
+        SingleFileUploaderComponent
     ],
   providers: [AuthorizationService, { provide: ErrorHandler, useClass: CustomErrorHandler }]
 })

@@ -7,10 +7,18 @@
                    <ion-card *virtualItem="let team" class="team-card">
                        <ion-card-subtitle >
                            <ion-row fxLayoutAlign="space-between center">
-                               <ion-text dir="rtl" >{{team.name}}</ion-text>
-                               <ion-button (click)="deleteTeam(team.id)" >
-                                   <ion-icon name="trash" lazy="true"></ion-icon>
-                               </ion-button>
+<ion-col>
+    <ion-text (click)="goToGroupPage(team.id)"  dir="rtl"  >{{team.name}}</ion-text>
+</ion-col>
+                            <ion-row>
+                                <ion-button (click)="onEditTeam(team)" fill="clear">
+                                    <ion-icon color="dark" name="create-outline" lazy="true" slot="icon-only"></ion-icon>
+                                </ion-button>
+
+                                <ion-button (click)="onShowDeleteTeamByIdAlert(team)" fill="clear">
+                                    <ion-icon color="primary" name="trash" lazy="true" slot="icon-only"></ion-icon>
+                                </ion-button>
+                            </ion-row>
                            </ion-row>
                        </ion-card-subtitle>
                        <ion-card-content style="display: flex; justify-content: center;bottom:5px" >
@@ -23,15 +31,25 @@
 
 
         <ion-item class="new-team" lines="none">
-          <ion-col fxLayoutAlign="center stretch">
-              <ion-input [(ngModel)]="newTeam.name"
-                         placeholder="نام گروه"></ion-input>
-              <ion-input [(ngModel)]="newTeam.members"
-                         placeholder="اعضای گروه"></ion-input>
-              <ion-button (click)="onSaveNewTeam()" >افزودن</ion-button>
-          </ion-col>
+        <ion-col>
+            <ion-row  fxLayoutAlign="center center">
+                <ion-input [(ngModel)]="newTeam.name" (keydown.enter)="onSaveNewTeam()"
+                           placeholder="نام گروه"></ion-input>
+                <ion-input [(ngModel)]="newTeam.members" (keydown.enter)="onSaveNewTeam()"
+                           placeholder="اعضای گروه"></ion-input>
+                <ion-button class="small-button" color="primary"  (click)="onSaveNewTeam()" >افزودن</ion-button>
+            </ion-row>
+
+        </ion-col>
         </ion-item>
     </ion-card-content>
 
 </ion-card>
 
+
+<ion-grid style="bottom: 0;left: 30px; position: absolute">
+    <ion-row style="row-gap: 20px">
+        <app-single-file-uploader  (selectedFile)="onCumulativeRegistration($event)" [textButton]="'ثبت تجمیعی گروها'"></app-single-file-uploader>
+        <ion-button class="middle-button" color="medium"  (click)="onShowDeleteAllTeamsAlert()"> حذف همه ی گروه ها</ion-button>
+    </ion-row>
+</ion-grid>

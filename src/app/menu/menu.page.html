@@ -2,7 +2,7 @@
 <ion-menu *ngIf="authService.isLoggedIn" side="start" content-id="main-content">
 <ion-header>
    <ion-toolbar translucent>
-     <ion-title>Menu</ion-title>
+     <ion-title>منو</ion-title>
    </ion-toolbar>
  </ion-header>
  <ion-content>
@@ -17,13 +17,13 @@
 
 <div class="ion-page" id="main-content">
 
-  <ion-header *ngIf="authService.isLoggedIn">
-    <ion-toolbar>
+  <ion-header *ngIf="authService.isLoggedIn"  >
+    <ion-toolbar color="dark">
       <ion-buttons slot="primary">
           <ion-button (click)="logOut()" >خروج</ion-button>
       </ion-buttons>
       <ion-buttons slot="start">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
+        <ion-menu-button auto-hide="false" ></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>

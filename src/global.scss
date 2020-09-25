@@ -94,6 +94,9 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    --ion-first-color: #1e2023;
+    --ion-toolbar-background: #0d0d0d;
   }
   
   /*
@@ -141,7 +144,9 @@
    */
   
   .md body {
-    --ion-background-color: #121212;
+    --ion-toolbar-background: #021989;
+
+    --ion-background-color: #021989;
     --ion-background-color-rgb: 18,18,18;
   
     --ion-text-color: #ffffff;
@@ -184,4 +189,38 @@
     color:white;
     background-color: seagreen;
   }
+
+}
+.middle-button{
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.big-button{
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 20px;
+}
+.small-button{
+  width: 50px;
+  height: 25px;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.ion-alert .alert-wrapper {
+  button{
+    color: #021672;
+}
+}
+
+.team-editor-modal .modal-wrapper{
+  max-height: 70px;
+  max-width: 500px;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0px 0px 14px 4px rgba(0,0,0,0.14);
+  -moz-box-shadow: inset 0px 0px 14px 4px rgba(0,0,0,0.14);
+  box-shadow: inset 0px 0px 14px 4px rgba(0,0,0,0.14);
 }

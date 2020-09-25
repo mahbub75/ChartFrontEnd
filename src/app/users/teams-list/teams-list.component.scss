@@ -1,14 +1,16 @@
 
-.team-card{
- height: 80px;
+.team-card {
+  height: 80px;
   padding: 3px;
   direction: rtl;
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-.new-team{
+.new-team {
   bottom: 0;
   left: 0;
   right: 0;
 }
-
+.team-card ion-text:hover{
+  color:blueviolet;
+}

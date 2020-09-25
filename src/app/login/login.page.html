@@ -2,15 +2,15 @@
   <ion-row class="ion-justify-content-center">
     <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
       <div class="ion-text-center">
-        <h4>ورود/ثبت نام</h4>
+        <h4>ورود به سیستم</h4>
       </div>
       <div class="ion-padding">
         <ion-item   lines="none">
-          <ion-input [(ngModel)]="userPass.name" type="text" placeholder="نام کاربری"></ion-input>
+          <ion-input [(ngModel)]="userPass.name" (keydown.enter)="login()" type="text" autocomplete="false" placeholder="نام کاربری"></ion-input>
         </ion-item>
 
         <ion-item  lines="none">
-          <ion-input [(ngModel)]="userPass.password" type="password" placeholder="رمز عبور"></ion-input>
+          <ion-input [(ngModel)]="userPass.password" (keydown.enter)="login()" type="password" autocomplete="false" placeholder="رمز عبور"></ion-input>
         </ion-item>
       </div>
 

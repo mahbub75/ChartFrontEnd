@@ -1,7 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MultiFileUploadComponent} from '../../lessons/session/files/multi-file-upload/multi-file-upload.component';
-import {FileService} from '../../lessons/session/files/file.service';
 import {Alert, MsgType} from '../../core/classes/alert';
+import {DatePipe} from '@angular/common';
+import {FileService} from '../../core/files/file.service';
+import {MultiFileUploadComponent} from '../../core/files/multi-file-upload/multi-file-upload.component';
+import {BaseComponent} from '../../core/component/BaseComponent/base.component';
+import {ToastController} from '@ionic/angular';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-admin',
@@ -9,12 +13,15 @@ import {Alert, MsgType} from '../../core/classes/alert';
     styleUrls: ['./admin.component.scss'],
     providers: [FileService]
 })
-export class AdminComponent implements OnInit {
-    selectedDate: string;
+export class AdminComponent extends BaseComponent implements OnInit {
     dateDisplayFormat = 'YYYY-MM-DD';
     @ViewChild(MultiFileUploadComponent) fileField: MultiFileUploadComponent;
+    startDate: Date;
+    endDate: Date;
+    subscriptions: Subscription[] = [];
 
-    constructor(private fileService: FileService) {
+    constructor(toastController: ToastController, private fileService: FileService, private datePipe: DatePipe) {
+        super(toastController);
     }
 
     ngOnInit() {
@@ -23,30 +30,45 @@ export class AdminComponent implements OnInit {
 
     upload(files) {
 
-        if (!this.selectedDate) {
-            Alert.toast('بازه زمانی را مشخص کنید', MsgType.negative)
+        if (!(this.startDate && this.endDate)) {
+            Alert.toast('بازه زمانی را مشخص کنید', MsgType.negative);
         } else {
+            const dates = this.dates;
             const formData = new FormData();
             files.forEach((file) => {
-                const uploadable = file.name.includes(this.selectedDate.slice(0,10));
-                console.log(this.selectedDate.slice(0,10),uploadable,file.name);
-                if (uploadable) {
-                    formData.append('files', file.rawFile, file.name);
-                }
+                dates.forEach((date) => {
+                    if (file.name.includes(date)) {
+                        formData.append('files', file.rawFile, file.name)
+                    }
+                })
+
             });
 
             // POST formData to Server
-            this.fileService.uploadFile(formData)
-                .subscribe(() => {
-                }, error => console.log(error))
+            this.subscriptions.push(
+                this.fileService.uploadFile(formData)
+                    .subscribe(() => {
+                        Alert.toast('آپلود انجام شد', MsgType.positive)
+                    }, error => console.log(error))
+            )
         }
 
     }
 
-    compareDate() {
-        // if (input1Date.getTime() < input2Date.getTime())
+    get dates() {
+        let startDate = new Date(this.startDate);
+        const stopDate = new Date(this.endDate);
+        const year = startDate.getFullYear();
+        const month = startDate.getMonth();
+        let day = startDate.getDate();
+        const dates = [];
+        while (startDate <= stopDate) {
+            dates.push(this.datePipe.transform(startDate, 'yyyy-MM-dd'));
+            startDate = new Date(year, month, ++day);
+        }
+        return dates;
     }
-
 }
 
-export const AdminRoute = {path: 'admin', component: AdminComponent}
+export const AdminRoute = {path: 'admin', component: AdminComponent};
+

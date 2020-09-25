@@ -1,0 +1,14 @@
+<ion-toolbar>
+    <ion-title>{{currentSession?.topic}}</ion-title>
+</ion-toolbar>
+
+<ion-content>
+
+    <app-drawing-graph *ngIf="selectedFile" [file]="selectedFile"></app-drawing-graph>
+
+    <app-file-list [files]="files" [sessionId]="sessionId" (selectedFileContent)="fileContent($event)" [header]="'فایل های '+' '+currentSession.topic">
+
+    </app-file-list>
+
+
+</ion-content>

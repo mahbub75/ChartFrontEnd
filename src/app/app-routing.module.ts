@@ -14,13 +14,14 @@ const routes: Routes = [
     canLoad:[LoginGuard]
   },
   {
-    path: 'lessons',
-    loadChildren: () => import('./lessons/lessons.module').then( m => m.LessonsPageModule)
-  },
-  {
     path: 'users',
     loadChildren: () => import('./users/users.module').then( m => m.UsersModule)
+  },
+  {
+    path: 'sessions',
+    loadChildren: () => import('./sessions/sessions.module').then(m => m.SessionsPageModule)
   }
+
 
 
 

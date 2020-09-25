@@ -16,15 +16,28 @@ ion-row {
 }
 
 ion-col {
-  border: 1px solid #488aff;
   background: $white-color;
+  border-radius: 10px;
 }
 
 ion-button {
   font-weight: 300;
 }
 ion-input {
-  background-color: #f7f9fa;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 50px 0 68px;}
+.circular{
+
+
+
 }
 
 @media (min-width: 240px) and (max-width: 768px) {

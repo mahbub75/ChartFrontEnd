@@ -4,3 +4,6 @@
 ion-content ion-toolbar {
   margin: 10px 0;
 }
+ion-toolbar{
+  background-color: var(--ion-toolbar-background)!important;
+}

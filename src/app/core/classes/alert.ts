@@ -7,6 +7,10 @@ export class Alert {
             message: toastMsg,
             duration: 2000,
             position: 'bottom',
+            cssClass:'positive-toast-msg',
+            color: msgType===MsgType.positive?'success':'danger',
+            animated:true,
+            translucent:true
         });
         await toast.present();
     }

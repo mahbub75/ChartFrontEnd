@@ -1,0 +1,17 @@
+<ion-grid dir="ltr" >
+  <ion-row class="ion-justify-content-center">
+ <ion-col class="file-input-container" >
+   <label style="color: white">
+     <input
+             #folderInput
+             type="file"
+             ng2FileSelect
+             [uploader]="uploader"
+             (change)="getFiles()"
+             webkitDirectory
+             multiple/>
+     Add Files
+   </label>
+ </ion-col>
+  </ion-row>
+</ion-grid>

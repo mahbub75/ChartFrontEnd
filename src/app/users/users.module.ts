@@ -12,10 +12,11 @@ import {TeamsListComponent} from './teams-list/teams-list.component';
 import {FlexModule} from '@angular/flex-layout';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CoreModule} from '../core/core.module';
-
+import { DatePipe } from '@angular/common'
+import {EditTeamComponent} from './teams-list/edit-team/edit-team.component';
 
 @NgModule({
-    declarations: [AdminComponent, TeamsListComponent],
+    declarations: [AdminComponent, TeamsListComponent, EditTeamComponent],
     imports: [
         CommonModule,
         RouterModule.forChild([AdminRoute]),
@@ -29,10 +30,9 @@ import {CoreModule} from '../core/core.module';
         FlexModule,
         ScrollingModule,
         CoreModule,
-
     ],
-    entryComponents:[TeamsListComponent],
-    providers: [File]
+    entryComponents:[TeamsListComponent, EditTeamComponent],
+    providers: [File,DatePipe]
 })
 export class UsersModule {
 }

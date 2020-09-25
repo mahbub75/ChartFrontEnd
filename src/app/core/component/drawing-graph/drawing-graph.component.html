@@ -1,10 +1,48 @@
 <ion-card>
-    <ion-card-content >
+    <ion-card-content>
         <ion-row>
-            <ion-col size="12" >
-                <div id="container" ></div>
+            <ion-col size="12">
+                <div id="container"></div>
             </ion-col>
         </ion-row>
     </ion-card-content>
+  <div fxLayout="column" fxLayoutAlign="space-around space-around" fxLayoutAlign.lt-sm="center space-around" fxLayout.xs="row" style="height: 100%">
+      <div fxLayout="row" fxLayout.xs="column" fxFlex.xs="20" fxLayoutAlign="space-around center" >
+          <ion-label fxFlex.gt-xs="20"  ngStyle.xs="font-size: 80%">ولت بر قسمت</ion-label>
+
+          <ion-label fxFlex.gt-xs="20" ngStyle.xs="font-size: 80%">آفست</ion-label>
+
+          <ion-label fxFlex.gt-xs="20" ngStyle.xs="font-size: 80%">علامت منفی</ion-label>
+
+          <ion-label fxFlex.gt-xs="20" ngStyle.xs="font-size: 80%">انتخاب</ion-label>
+
+          <ion-label fxFlex.gt-xs="20" ngStyle.xs="font-size: 80%">نمودار</ion-label>
+
+
+          </div>
+      <div fxLayout.xs="column" fxFlex.xs="20"  fxLayout="row" fxLayoutAlign="space-around center" *ngFor="let item of file.content.series"  >
+
+<ion-item  fxFlex.gt-xs="20" lines="none">
+    <ion-input [(ngModel)]="item.voltDiv" (ionChange)="somethingChanged()" ngStyle.xs="font-size:80%" type="number" step=".1" min="0" inputmode="decimal">v</ion-input>
+</ion-item>
+<ion-item fxFlex.gt-xs="20" lines="none">
+    <ion-input [(ngModel)]="item.offSet" (ionChange)="somethingChanged()"  ngStyle.xs="font-size:80%" type="number"  step=".1" inputmode="decimal"> v</ion-input>
+</ion-item>
+<ion-item fxFlex.gt-xs="20" lines="none">
+    <ion-toggle [(ngModel)]="item.sign" (ionChange)="somethingChanged($event.detail.checked)" color="medium" ngStyle.xs="--size:80%" ></ion-toggle>
+</ion-item >
+<ion-item  fxFlex.gt-xs="20" lines="none">
+    <ion-checkbox  checked [(ngModel)]="item.isChecked"  (click)="somethingChanged(item.isChecked)" ngStyle.xs="--size:80%" color="medium"></ion-checkbox>
+</ion-item>
+<ion-item  fxFlex.gt-xs="20" lines="none">
+    <ion-text  ngStyle.xs="font-size: 80%">{{item.name}}</ion-text>
+</ion-item>
+
+      </div>
+  </div>
+    <ion-card-content>
+        <ion-textarea>{{file?.description}}</ion-textarea>
+    </ion-card-content>
+
 </ion-card>
 

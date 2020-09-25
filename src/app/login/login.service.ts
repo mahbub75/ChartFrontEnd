@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LoginRepository} from './login-repository';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {User, UserRoll} from '../core/model/user';
 import {CoreRepository} from '../core/core-repository';
@@ -18,19 +18,7 @@ export class LoginService {
     constructor(private router: Router, private loginRepo: LoginRepository, private coreRepository: CoreRepository) {
     }
 
-    login(userPass: UserPass) {
-        this.subscription.push(
-            this.loginRepo.login(userPass).pipe(map((res: User) => res))
-                .subscribe(user => {
-                        console.log(user);
-                        this.coreRepository.user = user;
-                        if (user.roll === UserRoll.ADMIN) {
-                            this.router.navigate(['users/admin'])
-                        }
-
-
-                    }
-                ))
-
+    login(userPass: UserPass):Observable<User> {
+           return  this.loginRepo.login(userPass);
     }
 }

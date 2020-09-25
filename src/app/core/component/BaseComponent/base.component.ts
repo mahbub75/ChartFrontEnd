@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {SessionService} from '../../../lessons/session/session.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {SessionService} from '../../../sessions/session.service';
 import {ToastController} from '@ionic/angular';
+import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'app-base',
     templateUrl: './base.component.html',
     styleUrls: ['./base.component.scss'],
 })
-export class BaseComponent implements OnInit {
-
-    constructor(private toastController: ToastController) {
+export class BaseComponent implements OnInit, OnDestroy {
+    subscriptions:Subscription[]=[];
+    constructor(public toastController: ToastController) {
     }
 
     ngOnInit() {
@@ -20,6 +21,12 @@ export class BaseComponent implements OnInit {
             message: msg,
             duration: 2000
         })).present();
+    }
+
+    ngOnDestroy() {
+        for (const s of  this.subscriptions) {
+            s.unsubscribe();
+        }
     }
 
 }
