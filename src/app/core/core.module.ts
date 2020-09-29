@@ -13,11 +13,20 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {FileListComponent} from './files/file-list/file-list.component';
 import {MultiFileUploadComponent} from './files/multi-file-upload/multi-file-upload.component';
 import {SingleFileUploaderComponent} from './files/single-file-uploader/single-file-uploader.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
+import {MdsAngularPersianDateTimePickerComponent} from
+        './component/persian-date-time-picker/mds-angular-persian-date-time-picker.component';
+import {MdsAngularPersianDateTimePickerCoreComponent} from './component/persian-date-time-picker/core/mds-angular-persian-date-time-picker-core.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {SafeHtmlPipe} from './component/persian-date-time-picker/pipes/safe-html.pipe';
+import {PersianNumberPipe} from './component/persian-date-time-picker/pipes/persian-number.pipe';
 
 @NgModule({
-  declarations: [DrawingGraphComponent, BaseComponent,  MultiFileUploadComponent,FileListComponent,SingleFileUploaderComponent],
+  declarations: [DrawingGraphComponent, BaseComponent,  MultiFileUploadComponent,
+      FileListComponent,SingleFileUploaderComponent, MdsAngularPersianDateTimePickerCoreComponent,
+      MdsAngularPersianDateTimePickerComponent, SafeHtmlPipe, PersianNumberPipe],
     imports: [
         CommonModule,
         IonicModule,
@@ -28,14 +37,18 @@ import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
         FileUploadModule,
         FormsModule,
         FlexModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatInputModule
 
     ],
     exports: [
         DrawingGraphComponent,
         MultiFileUploadComponent,
         FileListComponent,
-        SingleFileUploaderComponent
+        SingleFileUploaderComponent,
+        MdsAngularPersianDateTimePickerComponent
     ],
   providers: [AuthorizationService, { provide: ErrorHandler, useClass: CustomErrorHandler }]
 })
