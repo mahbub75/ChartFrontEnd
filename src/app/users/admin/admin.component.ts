@@ -6,6 +6,11 @@ import {MultiFileUploadComponent} from '../../core/files/multi-file-upload/multi
 import {BaseComponent} from '../../core/component/BaseComponent/base.component';
 import {ToastController} from '@ionic/angular';
 import {Subscription} from 'rxjs';
+import {
+    IMdsAngularDateTimePickerDate,
+    IMdsAngularDateTimePickerRangeDate
+} from '../../core/component/persian-date-time-picker/classes/interfaces';
+import {MdsDatetimePickerUtility} from '../../core/component/persian-date-time-picker/classes/mds-datetime-picker.utility';
 
 @Component({
     selector: 'app-admin',
@@ -26,6 +31,14 @@ export class AdminComponent extends BaseComponent implements OnInit {
 
     ngOnInit() {
 
+    }
+    dateChanged(newDate: IMdsAngularDateTimePickerDate) {
+        console.log(newDate);
+        const d = MdsDatetimePickerUtility.dateTimeToString(newDate.utcDateTime, 'yyyy-MM-dd' + ' ' + 'hh:mm:ss');
+    }
+    rangeDateChangedHandler(rangeDate: IMdsAngularDateTimePickerRangeDate){
+        this.startDate = rangeDate.startDate.utcDateTime;
+        this.endDate = rangeDate.endDate.utcDateTime;
     }
 
     upload(files) {

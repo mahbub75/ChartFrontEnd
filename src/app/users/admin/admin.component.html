@@ -1,21 +1,31 @@
 <ion-content fullscreen>
     <ion-grid>
         <ion-row fxLayoutAlign="space-between stretch" class="main-container">
-            <ion-col  fxLayoutGap="30px" >
-                <ion-row fxLayoutGap="20px">
-                    <ion-datetime class="date-time" [(ngModel)]="startDate" [displayFormat]="dateDisplayFormat"
-                                  placeholder="از تاریخ"></ion-datetime>
-                    <ion-datetime class="date-time" [(ngModel)]="endDate" [displayFormat]="dateDisplayFormat"
-                                  placeholder="تا تاریخ"></ion-datetime>
-                </ion-row>
-                <ion-row >
+            <ion-col  >
+                <ion-row fxLayoutAlign=" center">
+                    <ion-col  sizeLg="4">
+                        <app-mds-angular-persian-datetimepicker  [templateType]="2"
+                                                                [textBoxType]="1" [inLine]="false"
+                                                                (rangeDateChanged)="rangeDateChangedHandler($event)"
+                                                                [rangeSelector]="true"
+                                                                (dateChanged)="dateChanged($event)" [timePicker]="false"
+                                                                [position]="'bottom'"
+                                                                [placeHolder]="'بازه زمانی'"></app-mds-angular-persian-datetimepicker>
+                    </ion-col >
+                    <ion-col  sizeLg="3" >
+                        <app-multi-file-upload style="width: 420px"
+                                               (selectedFiles)="upload($event)"></app-multi-file-upload>
 
-                        <app-multi-file-upload style="width: 420px" (selectedFiles)="upload($event)"></app-multi-file-upload>
-
+                    </ion-col>
                 </ion-row>
+
+
             </ion-col>
+
             <app-teams-list class="items-list"></app-teams-list>
+
         </ion-row>
     </ion-grid>
+    <ion-row>
+    </ion-row>
 </ion-content>
-
