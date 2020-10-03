@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from '../core/model/user';
 import {UsersRepository} from './users-repository';
-import {Team} from './teams-list/team';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +24,8 @@ return this.usersRepository.postNewTeam(newTeam,lessonId)
   deleteAllTeams(){
    return  this.usersRepository.deleteAllTeams();
   }
-  editTeam(team:Team){
-   return  this.usersRepository.editTeam(team);
+  editUser(user:User){
+   return  this.usersRepository.editUser(user);
   }
+
 }

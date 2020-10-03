@@ -8,7 +8,6 @@ import {FileModel} from './file-model';
     providedIn: 'root'
 })
 export class FileService {
-    subscriptions: Subscription[] = [];
     constructor(private sessionRepository: SessionRepository) {
     }
 
@@ -16,9 +15,6 @@ export class FileService {
         return this.sessionRepository.uploadFile(formData)
     }
 
-    // saveFile(file: FileModel, sessionId: string): Observable<{msg:string}> {
-    //     return this.sessionRepository.saveFile(file, sessionId);
-    // }
 
     deleteFile(filePath:string,fileName: string) {
         return this.sessionRepository.deleteFile(filePath,fileName)

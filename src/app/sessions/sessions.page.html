@@ -1,15 +1,13 @@
 <ion-toolbar>
-  <ion-title>{{currentLesson?.name}}</ion-title>
+  <ion-title >{{currentLesson?.name}}</ion-title>
 </ion-toolbar>
 
 <ion-content>
 
   <ion-list class="ion-list-margin" lines="none">
     <ion-item *ngFor="let session of sessions|async" (click)="goToSession(session.id)" class="ion-item-margin">
-      <ion-avatar slot="start">
-        <img src="../../assets/icon/favicon.png" alt=""/>
-      </ion-avatar>
-      <ion-label>
+        <ion-icon color="primary" name="calendar"></ion-icon>
+      <ion-label style="margin: 10px">
         <h2>{{session.topic}}</h2>
       </ion-label>
     </ion-item>

@@ -59,14 +59,4 @@ export class SessionRepository extends CoreRepository {
             map(res => res as Session)
         );
     }
-
-    creatSession() {
-        const params = new HttpParams({
-            fromObject: {
-                lessonId: '2',
-            }
-        });
-        const s = new Session('topic6')
-        return this.post('session', s, params)
-    }
 }

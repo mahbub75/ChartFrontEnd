@@ -13,9 +13,7 @@ export class SessionService {
   getSession(sessionId: string):Observable<Session> {
     return this.sessionRepository.getSession(sessionId);
   }
-  // creatSession(){
-  //   return this.sessionRepository.creatSession();
-  // }
+
   sessionList(userId:string): Observable<Session[]>{
     return this.sessionRepository.sessionList(userId);
   }

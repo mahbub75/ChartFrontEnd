@@ -4,7 +4,6 @@ import {CoreRepository} from '../core/core-repository';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
-import {Team} from './teams-list/team';
 
 @Injectable({
     providedIn: 'root'
@@ -27,24 +26,30 @@ export class UsersRepository extends CoreRepository {
         return this.delete('user' + '/' + teamId);
     }
 
-    editTeam(team: Team) {
-       const teamId = team.id;
-       console.log(team);
-        return this.put('user' + '/' + teamId, team);
+    editUser(user: User) {
+        return this.put('user', user);
     }
 
-    getTeamListByCenterIdAndLessonId(adminId: string, lessonId: string): Observable<Team[]> {
+    getTeamListByCenterIdAndLessonId(adminId: string, lessonId: string): Observable<User[]> {
         const params = new HttpParams({
             fromObject: {
                 lesson_id: lessonId,
             }
         });
         return this.get('admin' + '/' + adminId + '/' + 'teams', params).pipe(
-            map(res => res as Team[])
+            map(res => res as User[])
         )
     }
 
     deleteAllTeams() {
         return this.delete('delete-all-teams')
+    }
+    changePassword(changedPassword:string,userId:string){
+        const params = new HttpParams({
+            fromObject: {
+                newPassword: changedPassword,
+            }
+        });
+        return this.put('change-password' + '/' + userId,null,params);
     }
 }

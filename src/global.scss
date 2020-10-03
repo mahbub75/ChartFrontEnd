@@ -177,20 +177,35 @@
     --ion-item-background: #1A1B1E;
   }
   
-  ion-title.title-large {
-    --color: white;
-  }
+  ion-title {
+    text-align: right;
+    .title-large{
+      --color: white;
+    }
 
-  .negative-toast-msg{
-    color:white;
-    background-color: darkred;
   }
-  .positive-toast-msg{
-    color:white;
-    background-color: seagreen;
-  }
+  //
+  //.negative-toast-msg{
+  //  color:white;
+  //  background-color: darkred;
+  //}
+  //.positive-toast-msg{
+  //  color:white;
+  //  background-color: seagreen;
+  //}
 
 }
+@media (max-width: 576px) {
+  ion-card-content {
+    font-size: 2rem !important;
+  }
+}
+
+
+ion-title {
+  text-align: right;
+}
+
 .middle-button{
   width: 150px;
   height: 40px;
@@ -200,7 +215,7 @@
 .big-button{
   width: 300px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 20px;
 }
 .small-button{
@@ -220,7 +235,22 @@
   max-height: 70px;
   max-width: 500px;
   border-radius: 20px;
-  -webkit-box-shadow: inset 0px 0px 14px 4px rgba(0,0,0,0.14);
-  -moz-box-shadow: inset 0px 0px 14px 4px rgba(0,0,0,0.14);
-  box-shadow: inset 0px 0px 14px 4px rgba(0,0,0,0.14);
+  -webkit-box-shadow: inset 0 0 14px 4px rgba(0,0,0,0.14);
+  -moz-box-shadow: inset 0 0 14px 4px rgba(0,0,0,0.14);
+  box-shadow: inset 0 0 14px 4px rgba(0,0,0,0.14);
 }
+
+.change-password-modal .modal-wrapper{
+  max-height: 250px;
+  max-width: 350px;
+  border-radius: 20px;
+  z-index: 99999999;
+  -webkit-box-shadow: inset 0 0 17px 4px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0 0 17px 4px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 17px 4px rgba(0,0,0,0.3);
+}
+ion-item {
+  --background: none;
+  opacity:1;
+}
+

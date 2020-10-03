@@ -9,14 +9,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import {File} from '@ionic-native/file/ngx';
 import {TeamsListComponent} from './teams-list/teams-list.component';
-import {FlexModule} from '@angular/flex-layout';
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CoreModule} from '../core/core.module';
 import { DatePipe } from '@angular/common'
 import {EditTeamComponent} from './teams-list/edit-team/edit-team.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 @NgModule({
-    declarations: [AdminComponent, TeamsListComponent, EditTeamComponent],
+    declarations: [AdminComponent, TeamsListComponent, EditTeamComponent,ChangePasswordComponent],
     imports: [
         CommonModule,
         RouterModule.forChild([AdminRoute]),
@@ -30,9 +31,10 @@ import {EditTeamComponent} from './teams-list/edit-team/edit-team.component';
         FlexModule,
         ScrollingModule,
         CoreModule,
+        FlexLayoutModule,
     ],
     entryComponents:[TeamsListComponent, EditTeamComponent],
-    providers: [File,DatePipe]
+    providers: [File,DatePipe,]
 })
 export class UsersModule {
 }

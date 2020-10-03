@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {SessionsPage, SessionsPageRoute} from './sessions.page';
+import {SessionsPageRoute} from './sessions.page';
 
 const routes: Routes = [
   SessionsPageRoute,

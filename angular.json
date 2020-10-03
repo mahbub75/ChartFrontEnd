@@ -81,6 +81,19 @@
                 }
               ]
             },
+            "kntu-production": {
+              "outputPath": "kntu",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.kntu.ts"
+                },
+                {
+                  "replace": "src/index.html",
+                  "with": "src/index.kntu.html"
+                }
+              ]
+            },
             "ci": {
               "budgets": [
                 {

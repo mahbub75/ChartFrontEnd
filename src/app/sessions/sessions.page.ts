@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Session} from '../core/model/session';
-import {Lesson} from '../core/model/lesson';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SessionService} from './session.service';
 import {CoreRepository} from '../core/core-repository';
@@ -43,8 +42,6 @@ export class SessionsPage extends BaseComponent implements OnInit {
         this.router.navigate(['sessions' + '/' + sessionId])
     }
 
-    addNewSession() {
-    }
 
 }
 
