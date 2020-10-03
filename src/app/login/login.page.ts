@@ -3,12 +3,13 @@ import {Router} from '@angular/router';
 import {AuthorizationService} from '../core/service/authorization.service';
 import {LoginService} from './login.service';
 import {UserPass} from '../core/model/user-pass';
-import {ToastController} from '@ionic/angular';
+import {ModalController, ToastController} from '@ionic/angular';
 import {BaseComponent} from '../core/component/BaseComponent/base.component';
 import {map} from 'rxjs/operators';
 import {User, UserRoll} from '../core/model/user';
 import {Subscription} from 'rxjs';
 import {CoreRepository} from '../core/core-repository';
+
 
 @Component({
     selector: 'app-login',
@@ -21,12 +22,14 @@ export class LoginPage extends BaseComponent implements OnInit {
     subscriptions: Subscription[] = [];
 
     constructor(toastController: ToastController, private router: Router, private authorizationService: AuthorizationService,
-                private loginService: LoginService, private coreRepository: CoreRepository) {
+                private loginService: LoginService, private coreRepository: CoreRepository, private modalController:ModalController) {
         super(toastController);
     }
 
     ngOnInit() {
     }
+
+
 
     login() {
         this.subscriptions.push(this.loginService.login(this.userPass).pipe(map((res: User) => res))
