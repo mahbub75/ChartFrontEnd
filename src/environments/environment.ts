@@ -2,9 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// kntu environment
 export const environment = {
   production: false,
-  base_url: 'http://localhost:8080/'
+  base_url: 'http://localhost:8080/',
+  title: 'دانشگاه صنعتی خواجه نصیر الدین طوسی',
+  logo:'assets/kntu/logo.png',
+  toolbarImage: 'assets/kntu/toolbar-image.png',
 };
 
 /*
