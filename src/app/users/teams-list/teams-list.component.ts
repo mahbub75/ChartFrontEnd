@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../users.service';
-import {Team} from './team';
 import {CoreRepository} from '../../core/core-repository';
 import {tap} from 'rxjs/operators';
 import {BaseComponent} from '../../core/component/BaseComponent/base.component';
@@ -8,6 +7,7 @@ import {AlertController, ModalController, ToastController} from '@ionic/angular'
 import {Router} from '@angular/router';
 import {Alert, MsgType} from '../../core/classes/alert';
 import {EditTeamComponent} from './edit-team/edit-team.component';
+import {User, UserRoll} from '../../core/model/user';
 
 @Component({
     selector: 'app-teams-list',
@@ -16,11 +16,11 @@ import {EditTeamComponent} from './edit-team/edit-team.component';
     providers: [UsersService]
 })
 export class TeamsListComponent extends BaseComponent implements OnInit {
-    newTeam = new Team();
+    newTeam = new User();
     currentAdmin = CoreRepository.user;
     currentLesson = this.currentAdmin.lesson;
     adminId = CoreRepository.userId;
-    teamsList: Team[] = [];
+    teamsList: User[] = [];
 
     constructor(toastController: ToastController, private router: Router, private alertController: AlertController,
                 private usersService: UsersService, private modalController: ModalController) {
@@ -45,7 +45,7 @@ export class TeamsListComponent extends BaseComponent implements OnInit {
         }))
     }
 
-    async onEditTeam(currentTeam: Team) {
+    async onEditTeam(currentTeam: User) {
         const modal = await this.modalController.create({
             component: EditTeamComponent,
             cssClass: 'team-editor-modal',
@@ -60,7 +60,7 @@ export class TeamsListComponent extends BaseComponent implements OnInit {
         })
 
         if (editedTeam) {
-            this.subscriptions.push(this.usersService.editTeam(editedTeam).subscribe(() => {
+            this.subscriptions.push(this.usersService.editUser(editedTeam).subscribe(() => {
                 Alert.toast('کاربر با موفقیت ویرایش شد', MsgType.positive)
                 this.getTeamList();
             }));
@@ -76,17 +76,18 @@ export class TeamsListComponent extends BaseComponent implements OnInit {
 
     onSaveNewTeam() {
         this.newTeam.centerId = this.adminId;
+        this.newTeam.roll = UserRoll.TEAM;
         this.subscriptions.push(
             this.usersService.postNewTeam(this.newTeam, this.currentLesson.id).pipe(
                 tap(() => this.getTeamList())
             ).subscribe(() => {
-                this.newTeam = new Team();
+                this.newTeam = new User();
             })
         )
 
     }
 
-    async onShowDeleteTeamByIdAlert(team: Team) {
+    async onShowDeleteTeamByIdAlert(team: User) {
         const alert = await this.alertController.create({
             cssClass: 'ion-alert',
             message: ' گروه ' + team.name + ' حذف شود؟',
@@ -106,7 +107,7 @@ export class TeamsListComponent extends BaseComponent implements OnInit {
         await alert.present();
     }
 
-    deleteTeamById(team: Team) {
+    deleteTeamById(team: User) {
 
         this.subscriptions.push(
             this.usersService.deleteTeam(team.id).pipe(

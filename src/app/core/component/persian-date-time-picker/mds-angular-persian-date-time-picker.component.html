@@ -5,7 +5,7 @@
   </app-mds-datetime-picker-core>
 </div>
 
-<div *ngIf="!inLine && templateType == 2" style="background-color: #0a2496" class="datepicker-container">
+<div *ngIf="!inLine && templateType == 2"  class="datepicker-container">
   <mat-form-field>
     <input matInput type="text" [placeholder]="placeHolder" [formControl]="myControl" (focus)="dateTimeTextBoxOnFocusHandler($event)"
       (blur)="dateTimeTextBoxOnBlurHandler($event)" (keyup)="dateTimeTextBoxOnKeyupHandler($event)" data-mds-persian-datetimepicker>

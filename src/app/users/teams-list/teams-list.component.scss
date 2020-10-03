@@ -1,9 +1,12 @@
 
 .team-card {
-  height: 80px;
+  max-height: fit-content;
   padding: 3px;
   direction: rtl;
   margin-bottom: 15px;
+  .team-name:hover{
+    color: var(--ion-color-primary-tint)!important ;
+  }
 }
 
 .new-team {
@@ -11,6 +14,6 @@
   left: 0;
   right: 0;
 }
-.team-card ion-text:hover{
-  color:blueviolet;
+.buttons{
+  bottom: 0;left: 30px; position: absolute
 }

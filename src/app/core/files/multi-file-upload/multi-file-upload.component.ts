@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter,OnInit, Output} from '@angular/core';
 import {FileUploader, FileLikeObject} from 'ng2-file-upload';
-import {FileService} from '../file.service';
 import {BaseComponent} from '../../component/BaseComponent/base.component';
 import {ToastController} from '@ionic/angular';
 
@@ -11,7 +10,6 @@ import {ToastController} from '@ionic/angular';
 })
 export class MultiFileUploadComponent extends BaseComponent implements OnInit{
     public uploader: FileUploader = new FileUploader({});
-    public hasBaseDropZoneOver = false;
     @Output() selectedFiles = new EventEmitter<FileLikeObject[]>();
 
     constructor(toastController: ToastController) {

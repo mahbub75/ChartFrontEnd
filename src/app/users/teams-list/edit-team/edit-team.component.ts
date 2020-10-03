@@ -1,17 +1,20 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {Team} from '../team';
-import {ModalController} from '@ionic/angular';
+import {ModalController, ToastController} from '@ionic/angular';
+import {BaseComponent} from '../../../core/component/BaseComponent/base.component';
+import {User} from '../../../core/model/user';
 
 @Component({
   selector: 'app-edit-team',
   templateUrl: './edit-team.component.html',
   styleUrls: ['./edit-team.component.scss'],
 })
-export class EditTeamComponent implements OnInit {
-  @Input() team: Team;
+export class EditTeamComponent extends BaseComponent implements OnInit {
+  @Input() team: User;
 
 
-  constructor(private modalCtrl:ModalController) { }
+  constructor(toastController: ToastController, private modalCtrl:ModalController) {
+super(toastController);
+  }
 
   ngOnInit() {}
 
